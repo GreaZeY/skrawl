@@ -2,6 +2,9 @@ html,
 body {
   padding: 0;
   margin: 0;
+  background: #091833;
+  overflow-x: hidden;
+  color: white;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
@@ -13,4 +16,31 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+span {
+  position: absolute;
+  pointer-events: none;
+  background: #fff;
+  animation: animate 5s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    transform: scale(0) translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1) translateY(-500%) rotate(360deg);
+    opacity: 0;
+  }
 }
