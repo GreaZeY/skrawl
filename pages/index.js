@@ -7,7 +7,7 @@ import ChatBox from '../Components/ChatBox';
 // import Image from 'next/image'
 // import CanvasDraw from "react-canvas-draw";
 
-const title = 'Scrawl'
+const title = 'Skrawl'
 
 export default function Home() {
   return (
