@@ -12,14 +12,13 @@ const title = 'Skrawl'
 export default function Home() {
   return (
     <div className={styles.container}>
-
+      <CreateSquares />
       <Head>
         <title>{title}</title>
         <meta name="description" content={`${title} is a free multiplayer drawing and guessing game. Draw and guess words with your friends and people all around the world! Score the most points and be the winner!`} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <CreateSquares/>
         <Canvas />
       </main>
       {/* <ChatBox/> */}

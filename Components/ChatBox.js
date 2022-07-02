@@ -1,26 +1,21 @@
 import { useEffect, useState } from 'react'
-import io from 'socket.io-client'
-let socket;
+import socket from '../common/socket'
 
 const ChatBox = () => {
     const [input, setInput] = useState('')
 
+    const updateMessages= msg => {
+        setInput(msg)
+        console.log('dfd')
+    }
+
     useEffect(() => { 
-        socketInitializer()
+        socket.on('update-input', updateMessages)
+        return () => {
+            socket.off('update-input', updateMessages)
+        }
     }, [])
 
-    const socketInitializer = async () => {
-        await fetch('/api/socket');
-        socket = io()
-
-        socket.on('connect', () => {
-            console.log('connected')
-        })
-
-        socket.on('update-input', msg => {
-            setInput(msg)
-        })
-    }
 
     const onChangeHandler = (e) => {
         setInput(e.target.value)

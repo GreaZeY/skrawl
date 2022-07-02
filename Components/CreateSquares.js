@@ -22,6 +22,7 @@ const CreateSquares = () => {
             square.style.left = Math.random() * innerWidth + 'px';
 
             square.style.background = colors[Math.floor(Math.random() * colors.length)];
+
             body.appendChild(square);
 
             setTimeout(() => {
