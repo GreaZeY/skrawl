@@ -9,6 +9,7 @@ export const events = (socket,io) =>{
 
     //event to dispatch canvas points 
     socket.on('update-canvas', points => {
+        console.log(points)
         io.emit('update-canvas', points)
     })
 }
