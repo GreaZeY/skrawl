@@ -1,9 +1,11 @@
 import io from 'socket.io-client'
 let socket;
 
-let port = process.env.PORT || 3000
+const production = 'https://skrawl-grzy.herokuapp.com';
+const development = 'http://localhost:3000';
+const url = (process.env.NODE_ENV ? production : development);
 
-socket = io(`http://localhost:${port}`, { path: "/socket.io" });
+socket = io(url, { path: "/socket.io" });
 
 
 export default socket
