@@ -42,7 +42,6 @@ const Canvas = () => {
 
     const drawOnCanvas = (points) =>{
          ctx = canvasRef.current?.getContext("2d");
-         debugger
         if(!ctx) return
         const {x,y} =points
 
