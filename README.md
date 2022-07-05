@@ -1,5 +1,5 @@
 <h1 align="center"> 
-  <img width=50 src="https://github.com/GreaZeY/skrawl/raw/main/public/skrawl.png" alt="skrawl logo" /> <a href="https://skrawl-grzy.herokuapp.com" target="_blank" >Skrawl</a> 
+  <a href="https://skrawl-grzy.herokuapp.com" target="_blank" > <img width=50 src="https://github.com/GreaZeY/skrawl/raw/main/public/skrawl.png" alt="skrawl logo" /> Skrawl</a> 
 </h1>
 
 
