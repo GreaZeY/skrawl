@@ -12,5 +12,6 @@
 .canvas {
     background: white;
     border-radius: 12px;
+    cursor: url('/public/tools/pencil.cur');
 
 }

@@ -16,7 +16,7 @@ export default function Home() {
       <Head>
         <title>{title}</title>
         <meta name="description" content={`${title} is a free multiplayer drawing and guessing game. Draw and guess words with your friends and people all around the world! Score the most points and be the winner!`} />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/skrawl.png" />
       </Head>
       <main className={styles.main}>
         <Canvas />
