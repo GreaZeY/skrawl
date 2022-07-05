@@ -1,4 +1,4 @@
-<h1 align="center"> [ <img width=50 src="https://github.com/GreaZeY/skrawl/raw/main/public/skrawl.png" alt="Hi" />](https://skrawl-grzy.herokuapp.com/) [Skrawl](https://skrawl-grzy.herokuapp.com/) </h1>
+<h1 align="center"> <img width=50 src="https://github.com/GreaZeY/skrawl/raw/main/public/skrawl.png" alt="Hi" /> [Skrawl](https://skrawl-grzy.herokuapp.com/) </h1>
 
 
 ### Run in development mode
