@@ -5,21 +5,21 @@ import styles from '../styles/Canvas.module.css'
 
 const strokeSize = 5
 let drawing = false, timeoutHandle=null
-const Canvas = () => {
+const D2Canvas = () => {
 
     const [isYourTurn, setIsYourTurn] = useState(true)
     const canvasRef = useRef()
 
-    var ctx = canvasRef.current?.getContext("2d");
-
+    let ctx = canvasRef.current?.getContext("2d");
+    
     useEffect(() => {
         document?.addEventListener('pointerup', resetEvents)
         socket.on('update-canvas', updateCanvas)
-
         return () => {
             document?.removeEventListener('pointerup', resetEvents)
             socket.off('update-canvas', updateCanvas)
         }
+
     }, [])
 
     const updateCanvas = points => {
@@ -29,9 +29,9 @@ const Canvas = () => {
          timeoutHandle = setTimeout(()=>{
              ctx?.beginPath()
              timeoutHandle=null
-         },10)
+         },100)
     }
-
+    
     const getPoints = (evt) => {
 
         // if (!isYourTurn) return
@@ -42,11 +42,12 @@ const Canvas = () => {
         socket.emit('update-canvas', { x, y })
 
     }
-
+    
     const drawOnCanvas = (points) => {
         ctx = canvasRef.current?.getContext("2d");
         if (!ctx) return
         const { x, y } = points
+        
         ctx.lineWidth = strokeSize;
         ctx.lineCap = 'round'
         ctx.lineJoin = 'round';
@@ -63,6 +64,7 @@ const Canvas = () => {
     }
 
     return (
+        <div className={styles.main} >
         <div className={styles.canvasContainer}>
             <canvas
                 ref={canvasRef}
@@ -77,10 +79,11 @@ const Canvas = () => {
                 Canvas is not supported on your Browser
             </canvas>
         </div>
+        </div>
     )
 }
 
-export default Canvas
+export default D2Canvas
 
 
 

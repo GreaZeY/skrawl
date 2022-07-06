@@ -3,7 +3,7 @@ import styles from '../styles/Home.module.css'
 import CreateSquares from '../Components/CreateSquares';
 import Canvas from '../Components/D2Canvas';
 import ChatBox from '../Components/ChatBox';
-
+import MainScreen from '../Components/MainScreen';
 // import Image from 'next/image'
 // import CanvasDraw from "react-canvas-draw";
 
@@ -12,14 +12,15 @@ const title = 'Skrawl'
 export default function Home() {
   return (
     <div className={styles.container}>
-      <CreateSquares />
+      {/* <CreateSquares /> */}
       <Head>
         <title>{title}</title>
         <meta name="description" content={`${title} is a free multiplayer drawing and guessing game. Draw and guess words with your friends and people all around the world! Score the most points and be the winner!`} />
         <link rel="icon" href="/skrawl.png" />
       </Head>
       <main className={styles.main}>
-        <Canvas />
+        {/* <Canvas /> */}
+        <MainScreen />
       </main>
       {/* <ChatBox/> */}
       <footer className={styles.footer}>

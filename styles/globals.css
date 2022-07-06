@@ -1,3 +1,7 @@
+@font-face {
+  font-family: doodle;
+  src: url(doodle.otf);
+}
 html,
 body {
   padding: 0;
@@ -5,8 +9,7 @@ body {
   background: #091833;
   overflow-x: hidden;
   color: white;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  
 }
 
 a {
@@ -16,6 +19,7 @@ a {
 
 * {
   box-sizing: border-box;
+  font-family: doodle;
 }
 
 span {
@@ -23,6 +27,13 @@ span {
   pointer-events: none;
   background: #fff;
   animation: animate 5s linear infinite;
+}
+
+
+.flex-row{
+display: flex;
+justify-content: center;
+align-items: center;
 }
 
 @keyframes animate {
