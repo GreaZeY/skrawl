@@ -1,0 +1,37 @@
+.chatBox {
+    height: 610px;
+    width: 17vw;
+    background: white;
+    border: 5px solid #0e0f0f;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 12px;
+    padding: .5rem;
+    font-size: 1vmax;
+}
+
+.chatInput {
+    font-size: 1.5rem;
+    outline: none;
+    height: 2rem;
+    width: 80%;
+    border: 1px solid rgba(126, 119, 121, 0.13);
+    border-radius: 5px;
+    padding: .2rem 1rem;
+}
+
+.avatar{
+    background: rgb(61, 58, 58);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    margin-right: .5rem;
+}
+
+.msg{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: .4rem 0;
+}

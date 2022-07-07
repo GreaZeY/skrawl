@@ -1,17 +1,17 @@
 import React from 'react'
 import { useRef, useState, useEffect } from 'react';
 import socket from '../common/socket';
-import styles from '../styles/Canvas.module.css'
+
 
 const strokeSize = 5
-let drawing = false, timeoutHandle=null
-const D2Canvas = () => {
+let drawing = false, timeoutHandle = null
+const D2Canvas = ({styles,roomId}) => {
 
     const [isYourTurn, setIsYourTurn] = useState(true)
     const canvasRef = useRef()
 
     let ctx = canvasRef.current?.getContext("2d");
-    
+
     useEffect(() => {
         document?.addEventListener('pointerup', resetEvents)
         socket.on('update-canvas', updateCanvas)
@@ -26,12 +26,12 @@ const D2Canvas = () => {
         if (drawing) return
         if (timeoutHandle) clearTimeout(timeoutHandle);
         drawOnCanvas(points)
-         timeoutHandle = setTimeout(()=>{
-             ctx?.beginPath()
-             timeoutHandle=null
-         },100)
+        timeoutHandle = setTimeout(() => {
+            ctx?.beginPath()
+            timeoutHandle = null
+        }, 100)
     }
-    
+
     const getPoints = (evt) => {
 
         // if (!isYourTurn) return
@@ -39,15 +39,15 @@ const D2Canvas = () => {
         var rect = canvasRef.current.getBoundingClientRect();
         let x = evt.clientX - rect.left, y = evt.clientY - rect.top
         drawOnCanvas({ x, y })
-        socket.emit('update-canvas', { x, y })
+        socket.emit('update-canvas', {roomId,points:{ x, y }})
 
     }
-    
+
     const drawOnCanvas = (points) => {
         ctx = canvasRef.current?.getContext("2d");
         if (!ctx) return
         const { x, y } = points
-        
+
         ctx.lineWidth = strokeSize;
         ctx.lineCap = 'round'
         ctx.lineJoin = 'round';
@@ -64,7 +64,6 @@ const D2Canvas = () => {
     }
 
     return (
-        <div className={styles.main} >
         <div className={styles.canvasContainer}>
             <canvas
                 ref={canvasRef}
@@ -79,19 +78,7 @@ const D2Canvas = () => {
                 Canvas is not supported on your Browser
             </canvas>
         </div>
-        </div>
     )
 }
 
 export default D2Canvas
-
-
-
-
-
-// if (!drawing) {
-//     console.log('You drew')
-//     socket.emit('update-canvas', { x, y })
-// } else {
-//     console.log('someone drew')
-// }

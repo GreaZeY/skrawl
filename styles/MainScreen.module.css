@@ -1,13 +1,16 @@
 .main {
-    background: wheat;
+    background: rgb(255, 255, 255);
+    /* width: var(--mainDivWidth);
+    height: var(--mainDivHeight); */
+    /* background: url('/ui/maindiv.svg') no-repeat; */
     /* width:80vw ;
    height: 0vh; */
-    /* background: url('/ui/mainDiv.png'); */
-    /* background-position: center;
-    background-size: 80vw; */
-    /* background-repeat: no-repeat; */
+
+     background-position: center;
+
+
     z-index: 10;
-    border: 5px solid black;
+    /* border: 5px solid black; */
     border-radius: 8px;
     padding: 2rem;
     display: flex;
@@ -16,10 +19,11 @@
     align-items: center;
 }
 
+
 .title {
     font-size: 4vmax;
     margin: 0;
-    color: rgb(255, 0, 98);
+    color: rgb(56, 49, 52);
 }
 
 .form {

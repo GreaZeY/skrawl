@@ -2,14 +2,19 @@
   font-family: doodle;
   src: url(doodle.otf);
 }
+
+:root {
+  --mainDivHeight: 60vh;
+  --mainDivWidth: 40vw;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  background: #091833;
+  background: #1e201f;
   overflow-x: hidden;
-  color: white;
-  
+  background: url('/ui/background.jpg');
 }
 
 a {
@@ -27,6 +32,64 @@ span {
   pointer-events: none;
   background: #fff;
   animation: animate 5s linear infinite;
+}
+
+.error{
+  background: rgb(255, 60, 0);
+  padding: 2rem 5rem;
+  border-radius: 10px;
+  border: 5px solid black;
+}
+
+
+::-moz-selection {
+  background: #1e201f60;
+}
+
+::selection {
+  background: #1e201f60;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 6px;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(315deg, #1e201f 0%, #d3d6d5 100%);
+  border-radius: 50vmax;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+::placeholder {
+  color: #1e201f;
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  color: #1e201f;
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 
