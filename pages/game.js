@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import socket from "../common/socket";
 import styles from "../styles/Canvas.module.css";
 import ChatBox from "../Components/ChatBox";
+
 const game = () => {
   const router = useRouter();
   const roomId = router.query.room;
@@ -34,6 +35,7 @@ const game = () => {
       socket.emit("joinRoom", { username: name, room });
     }
   }, [roomId]);
+  
   const getRoomInfo = (room) => {
     console.log(room);
   };

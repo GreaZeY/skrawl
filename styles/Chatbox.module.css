@@ -1,6 +1,5 @@
 .chatBox {
-    height: 610px;
-    width: 17vw;
+    height: 725px;
     background: white;
     border: 5px solid #0e0f0f;
     display: flex;
@@ -11,17 +10,14 @@
     font-size: 1vmax;
 }
 
-.chatInput {
-    font-size: 1.5rem;
-    outline: none;
-    height: 2rem;
-    width: 80%;
-    border: 1px solid rgba(126, 119, 121, 0.13);
-    border-radius: 5px;
-    padding: .2rem 1rem;
+.form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.avatar{
+
+.avatar {
     background: rgb(61, 58, 58);
     width: 2rem;
     height: 2rem;
@@ -29,9 +25,35 @@
     margin-right: .5rem;
 }
 
-.msg{
+.msg {
     width: 100%;
     display: flex;
     align-items: center;
     padding: .4rem 0;
+}
+
+.form input {
+    font-size: 1.5vmax;
+    background: url('/ui/input.png') no-repeat;
+    background-size: cover;
+    background-position: center center;
+    outline: none;
+    border: none;
+    background-size: 100% 105%;
+    padding: .2rem 1rem;
+}
+
+.form button {
+    width: 4vmax;
+    height: 2.5vmax;
+    cursor: pointer;
+    border: none;
+    background: url('/ui/send-button.png') no-repeat;
+    background-position: center center;
+    background-size: 80%;
+}
+
+.form button:hover {
+    transition: .1s ease-in;
+    transform: scale(1.1) rotate(-1deg);
 }

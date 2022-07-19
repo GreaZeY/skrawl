@@ -1,9 +1,13 @@
+const announcer = "Broadcast";
 const users = [];
 
-//Join user to chat
+//User joins the game
 function userJoin(id, username, room) {
   const user = { id, username, room };
 
+  let userExists = users.filter(usr=>user.id===usr.id)
+
+  if(userExists.length) return userExists[0]
   users.push(user);
 
   return user;
@@ -13,7 +17,7 @@ function userJoin(id, username, room) {
 function getCurrentUser(id) {
   return users.find((user) => user.id === id);
 }
-//User leaves chat
+//User leaves the game
 function userLeave(id) {
   const index = users.findIndex((user) => user.id === id);
 
@@ -34,8 +38,6 @@ function formatMessage(username, text) {
   };
 }
 
-const appName = "broadcast";
-
 // all socket events
 
 export const events = (socket, io) => {
@@ -49,7 +51,7 @@ export const events = (socket, io) => {
       .to(user.room.id)
       .emit(
         "message",
-        formatMessage(appName, `${user.username} has joined the game!`)
+        formatMessage(announcer, `${user.username} has joined the game!`)
       );
 
     //Send User and room Info
@@ -79,7 +81,7 @@ export const events = (socket, io) => {
         .to(user.room.id)
         .emit(
           "message",
-          formatMessage(appName, `${user.username} has left the game!`)
+          formatMessage(announcer, `${user.username} has left the game!`)
         );
       //Send User and room Info
       io.to(user.room.id).emit("roomUsers", {

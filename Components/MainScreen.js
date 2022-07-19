@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import styles from "../styles/MainScreen.module.css";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
@@ -69,7 +69,7 @@ const MainScreen = () => {
             autoComplete="off"
             placeholder="Enter Your Name"
           />
-          <button>Play!</button>
+          <button type="submit" >Play!</button>
         </div>
       </form>
     </div>

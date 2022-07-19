@@ -5,7 +5,7 @@ const ChatBox = () => {
   const [messages, setMessages] = useState([]);
 
   const updateMessages = (msg) => {
-    setMessages((prevMsg) => [...prevMsg, msg]);
+    setMessages((prevMsgs) => [...prevMsgs, msg]);
   };
   useEffect(() => {
     socket.on("message", updateMessages);
@@ -23,7 +23,7 @@ const ChatBox = () => {
 
   return (
     <div className={styles.chatBox}>
-      <div style={{overflow: 'scroll'}} >
+      <div style={{ overflow: "scroll" }}>
         {messages.map((msg) => (
           <div
             className={styles.msg}
@@ -33,17 +33,14 @@ const ChatBox = () => {
               <div className={styles.avatar}></div>
             )}
 
-            {(msg.username !== "broadcast" ? `${msg.username}: ` : "") 
-              +msg.text}
+            {(msg.username !== "broadcast" ? `${msg.username}: ` : "") +
+              msg.text}
           </div>
         ))}
       </div>
-      <form onSubmit={sendMessage}>
-        <input
-          className={styles.chatInput}
-          name="msg"
-          placeholder="Guess by looking drawing"
-        />
+      <form className={styles.form} onSubmit={sendMessage}>
+        <input name="msg" placeholder="Type your guess here..." />
+        <button type="submit"></button>
       </form>
     </div>
   );
