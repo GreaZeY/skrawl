@@ -68,6 +68,6 @@
 .navigateButton>svg:hover {
     transition: .2s;
     cursor: pointer;
-    color: rgb(255, 0, 98) !important;
+    color: #82b924 !important;
     transform: scale(1.1);
 }

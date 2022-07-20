@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import socket from "../common/socket";
 import styles from "../styles/Chatbox.module.css";
-const ChatBox = () => {
+import { toMMSS } from "./gameFunctions";
+const ChatBox = ({ countdownTimer }) => {
   const [messages, setMessages] = useState([]);
 
   const updateMessages = (msg) => {
@@ -16,32 +17,47 @@ const ChatBox = () => {
   const sendMessage = (e) => {
     e.preventDefault();
     let msg = e.target.msg.value;
-    if(!msg) return
+    if (!msg) return;
     socket.emit("chatMessage", msg);
     e.target.msg.value = "";
   };
-
+console.log(messages)
   return (
-    <div className={styles.chatBox}>
-      <div style={{ overflow: "scroll" }}>
-        {messages.map((msg) => (
-          <div
-            className={styles.msg}
-            style={{ justifyContent: msg.username === "broadcast" && "center" }}
-          >
-            {msg.username !== "broadcast" && (
-              <div className={styles.avatar}></div>
-            )}
+    <div timer={toMMSS(countdownTimer)} className={styles.chatBox}>
+      {/* <div className={styles.msg} style={{ justifyContent: "center" }}>
+        {toMMSS(countdownTimer)}
+      </div> */}
+        <div className={styles.chats}>
+          {messages.map((msg, idx) => (
+            <div
+              key={msg.username + msg.text + idx}
+              className={styles.msg}
+              style={{
+                justifyContent: msg.username === "broadcast" && "center",
+              }}
+            >
+              {msg.username !== "broadcast" && (
+                <div className={styles.avatar}></div>
+              )}
 
-            {(msg.username !== "broadcast" ? `${msg.username}: ` : "") +
-              msg.text}
-          </div>
-        ))}
-      </div>
-      <form className={styles.form} onSubmit={sendMessage}>
-        <input name="msg" placeholder="Type your guess here..." />
-        <button type="submit"></button>
-      </form>
+              {msg.username !== "broadcast" ? (
+                <h4>{`${msg.username}:`}</h4>
+              ) : (
+                <></>
+              )}
+              <span style={{ marginLeft: ".5rem" }}>{msg.text}</span>
+            </div>
+          ))}
+        </div>
+        <form className={styles.form} onSubmit={sendMessage}>
+          <input
+            autoComplete="off"
+            tabIndex="-1"
+            name="msg"
+            placeholder="Type your guess here..."
+          />
+          <button type="submit" tabIndex="-1"></button>
+        </form>
     </div>
   );
 };

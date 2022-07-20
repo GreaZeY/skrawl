@@ -4,18 +4,15 @@ import { useRouter } from "next/router";
 import styles from "../styles/MainScreen.module.css";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
-import { importAll } from "../lib/utils";
 import socket from "../common/socket";
-let avatars = importAll(
-  require.context("../public/avatars", false, /\.(png|jpe?g|svg)$/)
-);
+import { skrawlAvatars } from "./Constants";
 
 const MainScreen = () => {
   const router = useRouter();
   const [currentImg, setCurrentImg] = useState(0);
 
   const setImgIndex = (opt) => {
-    let lastIndex = avatars.length - 1;
+    let lastIndex = skrawlAvatars.length - 1;
     if (opt === "ADD") {
       if (lastIndex === currentImg) return setCurrentImg(0);
       setCurrentImg(currentImg + 1);
@@ -49,7 +46,7 @@ const MainScreen = () => {
         </div>
         <div
           className={styles.avatar}
-          style={{ background: `url('${avatars[currentImg].src}')` }}
+          style={{ background: `url('${skrawlAvatars[currentImg].src}')` }}
         ></div>
         <div className={styles.navigateButton}>
           <NavigateNextIcon
