@@ -1,7 +1,8 @@
 .chatBox {
     position: relative;
-    height: 725px;
-    width:30rem;
+    width:100%;
+    min-height: 40vh;
+    min-width: 20vw;
     background: white;
     border: 5px solid #0e0f0f;
     display: flex;
@@ -14,19 +15,28 @@
 }
 .chatBox::before{
     content: attr(timer);
-    width: 5vmax;
-    border: 5px solid #0e0f0f;
-    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 8vmax;
+    height: 3vmax;
+    /* border: 5px solid #0e0f0f;
+    border-radius: 12px; */
     padding: .5rem 1rem;
     position: absolute;
-    background: #9dd241;
-    top:-4%;
-    left:30%;
+    background: var(--timer-color);
+    top:calc(0% - 1.5vmax);
+    left:calc(50% - 4vmax);
     text-align: center;
+    transition: .3s ease-in-out ;
+    box-sizing: border-box;
+    background: url('/ui/button-green.png') no-repeat;
+        background-size: cover;
+        background-position: center center;
 
 }
 .chats{
-    overflow: hidden scroll;
+    overflow-y: scroll;
 }
 
 .chats::-webkit-scrollbar {
@@ -60,17 +70,6 @@
     display: flex;
     align-items: center;
     padding: .4rem 0;
-}
-
-.form input {
-    font-size: 1.5vmax;
-    background: url('/ui/input.png') no-repeat;
-    background-size: cover;
-    background-position: center center;
-    outline: none;
-    border: none;
-    background-size: 100% 105%;
-    padding: .2rem 1rem;
 }
 
 .form button {

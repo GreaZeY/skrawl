@@ -1,15 +1,13 @@
 import React from "react";
 import { useRef, useState, useEffect } from "react";
 import socket from "../common/socket";
-import useWindowDimensions from "./CustomHooks/useWindowDimensions";
+import styles from "../pageStyles/Canvas.module.css";
 const strokeSize = 5;
 let drawing = false,
   timeoutHandle = null;
-const D2Canvas = ({ styles, roomId }) => {
+const D2Canvas = ({ roomId ,height=0,width=0}) => {
   const [isYourTurn, setIsYourTurn] = useState(true);
   const canvasRef = useRef();
-
-  const { height, width } = useWindowDimensions();
 
 
   let ctx = canvasRef.current?.getContext("2d");
@@ -72,10 +70,8 @@ const D2Canvas = ({ styles, roomId }) => {
     <div className={styles.canvasContainer}>
       <canvas
         ref={canvasRef}
-        height={height / 1.5}
-        width={width / 2}
-        // height={720}
-        // width={1024}
+        height={width > 720 ? height / 1.5 : height / 2}
+        width={width > 720 ? width / 2 : width - 50}
         className={styles.canvas}
         onPointerMove={getPoints}
         onPointerDown={() => (drawing = true)}

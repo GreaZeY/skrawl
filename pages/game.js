@@ -2,14 +2,15 @@ import D2Canvas from "../Components/D2Canvas";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import socket from "../common/socket";
-import styles from "../styles/Canvas.module.css";
+import styles from "../pageStyles/Game.module.css";
 import ChatBox from "../Components/ChatBox";
 import { ROUND_TIME } from "../Components/Constants";
+import useWindowDimensions from "../Components/CustomHooks/useWindowDimensions";
 
 const game = () => {
   const router = useRouter();
   const roomId = router.query.room;
-
+  const { height, width } = useWindowDimensions();
   const [userName, setUserName] = useState("");
   const [timer, setTimer] = useState(0);
 
@@ -33,6 +34,7 @@ const game = () => {
     if (name && roomId) {
       let room = {
         id: roomId,
+        roundTimer: ROUND_TIME
       };
       socket.emit("joinRoom", { username: name, room });
     }
@@ -43,7 +45,7 @@ const game = () => {
   };
 
   useEffect(() => {
-    setTimeout(() => {}, 1000 * ROUND_TIME * 60);
+    setTimeout(() => { }, 1000 * ROUND_TIME * 60);
   }, []);
 
   useEffect(() => {
@@ -55,19 +57,18 @@ const game = () => {
 
   const startTimer = () => {
     console.log("sds");
-    setTimer((prev) => prev+1);
+    setTimer((prev) => prev + 1);
   };
 
   return (
     <>
       <div className={styles.main}>
-        {userName && roomId ? (
+        {roomId ? (
           <div
-            className="flex-row"
-            style={{ justifyContent: "space-between", width: "60vw" }}
+            className={styles.gameContainer}
           >
-            <D2Canvas styles={styles} roomId={roomId} />
-            <ChatBox countdownTimer={timer} />
+            <D2Canvas roomId={roomId} height={height} width={width} />
+            <ChatBox countdownTimer={timer} height={height} width={width} />
           </div>
         ) : (
           <h1 className="error">This Room Doesn't exist!</h1>

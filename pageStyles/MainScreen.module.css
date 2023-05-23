@@ -21,22 +21,12 @@
     z-index: 10;
 }
 
-.form input,
 .form button {
     font-size: 1.5rem;
     outline: none;
     height: 3rem;
     width: 30vmax;
     border: none;
-}
-
-.form input {
-    background: url('/ui/input.png') no-repeat;
-    font-size: 1.5vmax;
-    background-size: cover;
-    background-position: center center;
-    background-size: 30vmax 2.5vmax !important;
-    padding: 2rem;
 }
 
 .form button {

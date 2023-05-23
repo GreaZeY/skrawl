@@ -1,0 +1,11 @@
+.input {
+    font-size: 1.5vmax;
+    background: url('/ui/input.png') no-repeat;
+    background-size: cover;
+    background-position: center center;
+    outline: none;
+    border: none;
+    background-size: 100% 105%;
+    padding: .2rem 1rem;
+    width: 100%;
+}

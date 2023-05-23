@@ -1,11 +1,12 @@
 import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import styles from "../styles/MainScreen.module.css";
+import styles from "../pageStyles/MainScreen.module.css";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import socket from "../common/socket";
 import { skrawlAvatars } from "./Constants";
+import SkrawlInput from "./CustomComponents/SkrawlInput/SkrawlInput";
 
 const MainScreen = () => {
   const router = useRouter();
@@ -57,15 +58,14 @@ const MainScreen = () => {
       </div>
       <form className={styles.form} onSubmit={joinGame}>
         <div className="flex-row">
-          <input
-            type="name"
+          <SkrawlInput
+            style={{width:'30vmax'}}
             name="name"
             minLength={3}
             maxLength={12}
             required
             autoComplete="off"
-            placeholder="Enter Your Name"
-          />
+            placeholder="Enter Your Name" />
           <button type="submit" >Play!</button>
         </div>
       </form>

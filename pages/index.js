@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import styles from '../pageStyles/Home.module.css'
 import MainScreen from '../Components/MainScreen';
 
 
