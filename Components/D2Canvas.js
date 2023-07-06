@@ -22,7 +22,7 @@ const D2Canvas = ({ roomId ,height=0,width=0}) => {
     socket.on("update-canvas", updateCanvas);
     return () => {
       document?.removeEventListener("pointerup", resetEvents);
-      socket.off("update-canvas", updateCanvas);
+      socket.off("update-canvas");
     };
   }, []);
 

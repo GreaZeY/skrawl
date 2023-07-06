@@ -13,7 +13,7 @@ const ChatBox = ({ height = 0, width = 0 }) => {
   useEffect(() => {
     socket.on("message", updateMessages);
     return () => {
-      socket.off("message", updateMessages);
+      socket.off("message");
     };
   }, []);
 

@@ -17,7 +17,7 @@ const game = () => {
   useEffect(() => {
     socket.on("roomUsers", getRoomInfo);
     return () => {
-      socket.off("roomUsers", getRoomInfo);
+      socket.off("roomUsers");
     };
   }, []);
 
