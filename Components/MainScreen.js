@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import styles from "../pageStyles/MainScreen.module.css";
 
 
-import { MdNavigateNext } from 'react-icons/md';
+import { MdNavigateNext, MdNavigateBefore } from 'react-icons/md';
 import socket from "../common/socket";
 import { skrawlAvatars } from "./Constants";
 import SkrawlInput from "./CustomComponents/SkrawlInput/SkrawlInput";
@@ -41,7 +41,7 @@ const MainScreen = () => {
       <h1 className={styles.title}>SKRAWL</h1>
       <div className="flex-row">
         <div className={styles.navigateButton}>
-          <MdNavigateNext
+          <MdNavigateBefore
             style={{ color: "black", fontSize: "5rem" }}
             onClick={() => setImgIndex()}
           />
