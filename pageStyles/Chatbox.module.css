@@ -13,28 +13,7 @@
     padding-right: 0;
     font-size: 1vmax;
 }
-.chatBox::before{
-    content: attr(timer);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 8vmax;
-    height: 3vmax;
-    /* border: 5px solid #0e0f0f;
-    border-radius: 12px; */
-    padding: .5rem 1rem;
-    position: absolute;
-    background: var(--timer-color);
-    top:calc(0% - 1.5vmax);
-    left:calc(50% - 4vmax);
-    text-align: center;
-    transition: .3s ease-in-out ;
-    box-sizing: border-box;
-    background: url('/ui/button-green.png') no-repeat;
-        background-size: cover;
-        background-position: center center;
 
-}
 .chats{
     overflow-y: scroll;
 }

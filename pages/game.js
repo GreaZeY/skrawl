@@ -12,7 +12,7 @@ const game = () => {
   const roomId = router.query.room;
   const { height, width } = useWindowDimensions();
   const [userName, setUserName] = useState("");
-  const [timer, setTimer] = useState(0);
+
 
   useEffect(() => {
     socket.on("roomUsers", getRoomInfo);
@@ -44,22 +44,6 @@ const game = () => {
     console.log(room);
   };
 
-  useEffect(() => {
-    setTimeout(() => { }, 1000 * ROUND_TIME * 60);
-  }, []);
-
-  useEffect(() => {
-    let interval = setInterval(startTimer, 1000);
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
-
-  const startTimer = () => {
-    console.log("sds");
-    setTimer((prev) => prev + 1);
-  };
-
   return (
     <>
       <div className={styles.main}>
@@ -68,7 +52,7 @@ const game = () => {
             className={styles.gameContainer}
           >
             <D2Canvas roomId={roomId} height={height} width={width} />
-            <ChatBox countdownTimer={timer} height={height} width={width} />
+            <ChatBox height={height} width={width} />
           </div>
         ) : (
           <h1 className="error">This Room Doesn't exist!</h1>
