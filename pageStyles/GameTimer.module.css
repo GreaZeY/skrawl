@@ -15,7 +15,7 @@
     text-align: center;
     transition: .3s ease-in-out;
     box-sizing: border-box;
-    background: url('/ui/button-green.png') no-repeat;
+    background: url('/ui/button-green.svg') no-repeat;
     background-size: cover;
     background-position: center center;
 

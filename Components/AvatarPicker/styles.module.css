@@ -1,0 +1,13 @@
+.avatar {
+    height: 20vmax;
+    width: 20vmax;
+    background-repeat: no-repeat !important;
+    background-size: 20vmax 20vmax !important;
+}
+
+.navigateButton>svg:hover {
+    transition: .2s;
+    cursor: pointer;
+    color: #82b924 !important;
+    transform: scale(1.1);
+}

@@ -1,0 +1,47 @@
+.skrawlInput {
+    font-size: 1.5vmax;
+    background: url('/ui/input.svg') no-repeat;
+    background-size: cover;
+    background-position: center center;
+    outline: none;
+    border: none;
+    background-size: 100% 105%;
+    padding: .2rem 1rem;
+    width: 100%;
+}
+
+.skrawlBtn {
+    width: 8rem;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    font-size: 1.5vmax;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    width: 6.5vmax;
+    height: 2.5vmax;
+    background: url('/ui/button-green.svg') no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.skrawlBtn:hover {
+    transition: .1s ease-in;
+    transform: scale(1.1) rotate(-1deg);
+}
+
+
+.skrawlArrowBtn {
+    width: 4vmax;
+    height: 2.5vmax;
+    cursor: pointer;
+    border: none;
+    background: url('/ui/send-button.svg') no-repeat;
+    background-position: center center;
+    background-size: 80%;
+}
+
+.skrawlArrowBtn:hover {
+    transition: .1s ease-in;
+    transform: scale(1.1) rotate(-1deg);
+}

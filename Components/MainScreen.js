@@ -1,28 +1,13 @@
 import { v4 as uuidv4 } from "uuid";
-import { useState } from "react";
 import { useRouter } from "next/router";
 import styles from "../pageStyles/MainScreen.module.css";
-
-
-import { MdNavigateNext, MdNavigateBefore } from 'react-icons/md';
 import socket from "../common/socket";
-import { skrawlAvatars } from "./Constants";
-import SkrawlInput from "./CustomComponents/SkrawlInput/SkrawlInput";
+import SkrawlInput from "./CustomComponents/SkrawlElements/SkrawlInput";
+import SkrawlActionBtn from "./CustomComponents/SkrawlElements/SkrawlActionBtn";
+import AvatarPicker from "./AvatarPicker/AvatarPicker";
 
 const MainScreen = () => {
   const router = useRouter();
-  const [currentImg, setCurrentImg] = useState(0);
-
-  const setImgIndex = (opt) => {
-    let lastIndex = skrawlAvatars.length - 1;
-    if (opt === "ADD") {
-      if (lastIndex === currentImg) return setCurrentImg(0);
-      setCurrentImg(currentImg + 1);
-    } else {
-      if (0 === currentImg) return setCurrentImg(lastIndex);
-      setCurrentImg(currentImg - 1);
-    }
-  };
 
   const joinGame = (e) => {
     e.preventDefault();
@@ -36,38 +21,26 @@ const MainScreen = () => {
     router.push(`/game?room=${room.id}`);
   };
 
+  const onAavatarChange = (avatar) => {
+    console.log(avatar)
+  };
+
   return (
     <div className={styles.main}>
       <h1 className={styles.title}>SKRAWL</h1>
-      <div className="flex-row">
-        <div className={styles.navigateButton}>
-          <MdNavigateBefore
-            style={{ color: "black", fontSize: "5rem" }}
-            onClick={() => setImgIndex()}
-          />
-        </div>
-        <div
-          className={styles.avatar}
-          style={{ background: `url('${skrawlAvatars[currentImg].src}')` }}
-        ></div>
-        <div className={styles.navigateButton}>
-          <MdNavigateNext
-            style={{ color: "black", fontSize: "5rem" }}
-            onClick={() => setImgIndex("ADD")}
-          />
-        </div>
-      </div>
+      <AvatarPicker onChange={onAavatarChange} />
       <form className={styles.form} onSubmit={joinGame}>
         <div className="flex-row">
           <SkrawlInput
-            style={{width:'30vmax'}}
+            style={{ width: "30vmax" }}
             name="name"
             minLength={3}
             maxLength={12}
             required
             autoComplete="off"
-            placeholder="Enter Your Name" />
-          <button type="submit" >Play!</button>
+            placeholder="Enter Your Name"
+          />
+          <SkrawlActionBtn title="Play" type="submit" />
         </div>
       </form>
     </div>

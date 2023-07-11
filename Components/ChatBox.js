@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import socket from "../common/socket";
 import styles from "../pageStyles/Chatbox.module.css";
-import SkrawlInput from "./CustomComponents/SkrawlInput/SkrawlInput";
+import SkrawlInput from "./CustomComponents/SkrawlElements/SkrawlInput";
 import GameTimer from "./CustomComponents/GameTimer";
+import SkrawlArrowBtn from "./CustomComponents/SkrawlElements/SkrawlArrowBtn";
 const ChatBox = ({ height = 0, width = 0 }) => {
   const [messages, setMessages] = useState([]);
 
@@ -59,7 +60,7 @@ const ChatBox = ({ height = 0, width = 0 }) => {
         <SkrawlInput autoComplete="off"
           name="msg"
           placeholder="Type your guess here..." />
-        <button type="submit" />
+        <SkrawlArrowBtn type="submit" />
       </form>
     </div>
   );

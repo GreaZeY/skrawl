@@ -51,18 +51,3 @@
     padding: .4rem 0;
 }
 
-.form button {
-    width: 4vmax;
-    height: 2.5vmax;
-    cursor: pointer;
-    border: none;
-    background: url('/ui/send-button.png') no-repeat;
-    background-position: center center;
-    background-size: 80%;
-}
-
-.form button:hover {
-    transition: .1s ease-in;
-    transform: scale(1.1) rotate(-1deg);
-}
-
