@@ -1,6 +1,6 @@
 import { Server } from 'socket.io'
 import { events } from '../../common/socketEvents'
-const SocketHandler = (req, res) => {
+const SocketHandler = (_, res) => {
 
     if (!res.socket.server.io) {
         const io = new Server(res.socket.server)
@@ -9,6 +9,7 @@ const SocketHandler = (req, res) => {
             // this function will call all socket events 
             events(socket,io)
         })
+        console.log('Connected')
     }
     res.end()
 }
