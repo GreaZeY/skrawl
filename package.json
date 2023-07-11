@@ -6,7 +6,7 @@
     "dev": "next dev",
     "dev:api": "cross-env NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "cross-env PORT=3001 next start"
   },
   "dependencies": {
     "next": "12.1.6",
