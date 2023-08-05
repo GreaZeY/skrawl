@@ -21,14 +21,12 @@ const MainScreen = () => {
     router.push(`/game?room=${room.id}`);
   };
 
-  const onAavatarChange = (avatar) => {
-    console.log(avatar)
-  };
+  const onAvatarChange = (avatar) => {};
 
   return (
     <div className={styles.main}>
       <h1 className={styles.title}>SKRAWL</h1>
-      <AvatarPicker onChange={onAavatarChange} />
+      <AvatarPicker onChange={onAvatarChange} />
       <form className={styles.form} onSubmit={joinGame}>
         <div className="flex-row">
           <SkrawlInput
