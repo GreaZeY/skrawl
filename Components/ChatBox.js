@@ -1,34 +1,35 @@
-import { useEffect, useState } from "react";
-import socket from "../common/socket";
+import { useState } from "react";
 import styles from "../pageStyles/Chatbox.module.css";
 import SkrawlInput from "./CustomComponents/SkrawlElements/SkrawlInput";
 import GameTimer from "./CustomComponents/GameTimer";
 import SkrawlArrowBtn from "./CustomComponents/SkrawlElements/SkrawlArrowBtn";
+import { useRouter } from "next/router";
+import { sendRequestToPusher } from "../lib/pusherUtils";
+import usePusherEvent from "../Hooks/usePusherEvent";
+import { CHAT } from "../common/Constants";
+
 const ChatBox = ({ height = 0, width = 0 }) => {
   const [messages, setMessages] = useState([]);
+  const router = useRouter();
+  const roomId = router.query.room;
 
   const updateMessages = (msg) => {
     setMessages((prevMsgs) => [...prevMsgs, msg]);
   };
-
-  useEffect(() => {
-    socket.on("message", updateMessages);
-    return () => {
-      socket.off("message");
-    };
-  }, []);
+  usePusherEvent(roomId, CHAT, updateMessages);
 
   const sendMessage = (e) => {
     e.preventDefault();
     let msg = e.target.msg.value;
     if (!msg) return;
-    socket.emit("chatMessage", msg);
+    let username = localStorage.getItem("username");
+    sendRequestToPusher(`chat/${roomId}`, { username, text: msg });
     e.target.msg.value = "";
   };
 
   return (
     <div
-      style={{ height: width > 720 ? height / 1.47 : 'unset' }}
+      style={{ height: width > 720 ? height / 1.47 : "unset" }}
       className={styles.chatBox}
     >
       <div>
@@ -57,9 +58,11 @@ const ChatBox = ({ height = 0, width = 0 }) => {
         </div>
       </div>
       <form className={styles.form} onSubmit={sendMessage}>
-        <SkrawlInput autoComplete="off"
+        <SkrawlInput
+          autoComplete="off"
           name="msg"
-          placeholder="Type your guess here..." />
+          placeholder="Type your guess here..."
+        />
         <SkrawlArrowBtn type="submit" />
       </form>
     </div>
